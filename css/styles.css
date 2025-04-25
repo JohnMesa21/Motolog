@@ -73,7 +73,7 @@ body {
 .hero {
     height: 100vh;
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                url('../images/mototuring.png') center/cover no-repeat;
+                url('../images/Bmw.png') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -83,7 +83,7 @@ body {
     position: center;
     overflow: hidden;
 }
-/*
+
 .hero::before {
     content: '';
     position: absolute;
@@ -91,10 +91,10 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('../images/Anderr.png') repeat;
+    background: url('../images/Bmw.png') repeat;
     opacity: 0.1;
     z-index: 1;
-} */
+} 
 
 .hero-content {
     max-width: 800px;
