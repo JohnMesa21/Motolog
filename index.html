@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MotoLog - Tu Diario de Motocicleta</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <h1>MotoLog</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#profile">Mi Moto</a></li>
+                <li><a href="#routes">Rutas</a></li>
+                <li><a href="#community">Comunidad</a></li>
+                <li><a href="#" id="loginBtn" class="btn-login">Iniciar Sesión</a></li>
+                <li><a href="#" id="logoutBtn" class="btn-login" style="display: none;">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h2>Tu Compañero de Ruta</h2>
+                <p>Registra, explora y comparte tus aventuras en moto</p>
+                <button class="btn-primary">Comenzar</button>
+            </div>
+        </section>
+
+        <section id="profile" class="profile-section">
+            <h2>Perfil de Motocicleta</h2>
+            <div class="profile-container">
+                <div class="profile-card">
+                    <h3>Registrar Nueva Moto</h3>
+                    <form id="bike-form">
+                        <div class="form-group">
+                            <label for="brand">Marca</label>
+                            <input type="text" id="brand" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="model">Modelo</label>
+                            <input type="text" id="model" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="year">Año</label>
+                            <input type="number" id="year" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="kilometers">Kilometraje Actual</label>
+                            <input type="number" id="kilometers" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="plate">Matrícula</label>
+                            <input type="text" id="plate" required>
+                        </div>
+                        <button type="submit" class="btn-primary">Guardar</button>
+                    </form>
+                </div>
+
+                <div class="profile-card">
+                    <h3>Mis Motos</h3>
+                    <div id="bikes-list" class="bikes-list">
+                        <!-- Las motos se cargarán dinámicamente -->
+                    </div>
+                </div>
+
+                <div class="profile-card">
+                    <h3>Alertas de Mantenimiento</h3>
+                    <div id="maintenance-alerts" class="maintenance-alerts">
+                        <!-- Las alertas se cargarán dinámicamente -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="routes" class="routes-section">
+            <h2>Explorador de Rutas</h2>
+            <div class="routes-controls">
+                <div class="route-search">
+                    <input type="text" id="route-origin" placeholder="Origen">
+                    <input type="text" id="route-destination" placeholder="Destino">
+                    <button id="calculate-route" class="btn-primary">Calcular Ruta</button>
+                </div>
+            </div>
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+        </section>
+
+        <section id="community" class="community-section">
+            <h2>Comunidad</h2>
+            <div class="community-container">
+                <div class="community-card">
+                    <h3>Grupos Activos</h3>
+                    <div class="groups-list">
+                        <!-- Los grupos se cargarán dinámicamente -->
+                    </div>
+                </div>
+
+                <div class="community-card">
+                    <h3>Retos del Mes</h3>
+                    <div class="challenges-list">
+                        <!-- Los retos se cargarán dinámicamente -->
+                    </div>
+                </div>
+
+                <div class="community-card">
+                    <h3>Actividad Reciente</h3>
+                    <div class="activity-feed">
+                        <!-- La actividad se cargará dinámicamente -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 MotoLog By Anderson Mesa. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Modal de Autenticación -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="auth-tabs">
+                <button class="tab-btn active" data-tab="login">Iniciar Sesión</button>
+                <button class="tab-btn" data-tab="register">Registrarse</button>
+            </div>
+            
+            <div id="loginForm" class="auth-form">
+                <h3>Iniciar Sesión</h3>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Contraseña</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Iniciar Sesión</button>
+                </form>
+            </div>
+
+            <div id="registerForm" class="auth-form" style="display: none;">
+                <h3>Registrarse</h3>
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="register-name">Nombre</label>
+                        <input type="text" id="register-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email">Email</label>
+                        <input type="email" id="register-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Contraseña</label>
+                        <input type="password" id="register-password" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Registrarse</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module">
+        import db from './js/db.js';
+        import mapManager from './js/maps.js';
+        import maintenanceManager from './js/maintenance.js';
+        import communityManager from './js/community.js';
+
+        // Inicializar la base de datos
+        window.db = db;
+
+        // Inicializar el gestor de mapas
+        window.mapManager = mapManager;
+
+        // Inicializar el gestor de mantenimiento
+        window.maintenanceManager = maintenanceManager;
+
+        // Inicializar el gestor de comunidad
+        window.communityManager = communityManager;
+
+        // Función global para inicializar el mapa
+        window.initMap = function() {
+            mapManager.initMap();
+        };
+    </script>
+
+    <script src="js/app.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=places" async defer></script>
+</body>
+</html> 
